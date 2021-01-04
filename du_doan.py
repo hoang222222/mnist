@@ -6,7 +6,7 @@ from keras.models import load_model
 # load and prepare the image
 def load_image(filename):
     # load the image
-    img = load_img('sample_image.png', grayscale=True, target_size=(28, 28))
+    img = load_img('capture.png', grayscale=True, target_size=(28, 28))
     # convert to array
     img = img_to_array(img)
     # reshape into a single sample with 1 channel
@@ -20,7 +20,7 @@ def load_image(filename):
 # load an image and predict the class
 def run_example():
     # load the image
-    img = load_image('sample_image.png')
+    img = load_image('capture.png')
     # load model
     model = load_model('ai_model.h5')
     # predict the class
