@@ -9,9 +9,10 @@ import os
 
 width = 600
 height = 400
-center = height//2
+center = height // 2
 white = (255, 255, 255)
 green = (0, 128, 0)
+
 
 def paint(event):
     # python_green = "#476042"
@@ -19,14 +20,17 @@ def paint(event):
     x2, y2 = (event.x + 1), (event.y + 1)
     cv.create_oval(x1, y1, x2, y2, fill="black", width=5)
     draw.line([x1, y1, x2, y2], fill="black", width=5)
+
+
 def delete():
     cv.delete("all")
     if os.path.exists("capture.png"):
         os.remove("capture.png")
     #    messagebox.showwarning("Cảnh báo", "Đã xoá")
-    #else:
+    # else:
     #    messagebox.showerror("Lỗi", "File không tồn tại")
-    root.update()
+
+
 # load and prepare the image
 def load_image(filename):
     # load the image
