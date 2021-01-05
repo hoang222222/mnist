@@ -19,6 +19,7 @@ def paint(event):
     x2, y2 = (event.x + 1), (event.y + 1)
     cv.create_oval(x1, y1, x2, y2, fill="black", width=5)
     draw.line([x1, y1, x2, y2], fill="black", width=5)
+
 def delete():
     cv.delete("all")
     if os.path.exists("capture.png"):
