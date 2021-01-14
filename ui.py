@@ -65,8 +65,7 @@ root.title('Nhận diện chữ số viết tay')
 
 # Tkinter create a canvas to draw on
 cv = Canvas(root, width=width, height=height, bg='white')
-cv.grid(row=0, column=0)
-cv.pack()
+
 
 # PIL create an empty image and draw object to draw on
 # memory only, not visible
