@@ -16,8 +16,8 @@ green = (0, 128, 0)
 
 def paint(event):
     # python_green = "#476042"
-    x1, y1 = (event.x - 1), (event.y - 1)
-    x2, y2 = (event.x + 1), (event.y + 1)
+    x1, y1 = (event.x - 2), (event.y - 2)
+    x2, y2 = (event.x + 2), (event.y + 2)
     cv.create_oval(x1, y1, x2, y2, fill="black", width=5)
     draw.line([x1, y1, x2, y2], fill="black", width=5)
 
@@ -34,7 +34,7 @@ def delete():
 # load and prepare the image
 def load_image(filename):
     # load the image
-    img = load_img('capture.png', grayscale=True, target_size=(28, 28))
+    img = load_img("capture.png", grayscale=True, target_size=(28, 28))
     # convert to array
     img = img_to_array(img)
     # reshape into a single sample with 1 channel
@@ -48,10 +48,10 @@ def load_image(filename):
 # load an image and predict the class
 def result():
     # save the image
-    filename = "capture.png"
-    image1.save(filename)
+    # filename =
+    image1.save("capture.png")
     # load the image
-    img = load_image('capture.png')
+    img = load_image("capture.png")
     # load model
     model = load_model('ai_model.h5')
     # predict the class
@@ -65,7 +65,6 @@ root.title('Nhận diện chữ số viết tay')
 
 # Tkinter create a canvas to draw on
 cv = Canvas(root, width=width, height=height, bg='white')
-
 
 # PIL create an empty image and draw object to draw on
 # memory only, not visible
@@ -84,8 +83,8 @@ cv.bind("<B1-Motion>", paint)
 # PIL image can be saved as .png .jpg .gif or .bmp file (among others)
 # filename = "my_drawing.png"
 # image1.save(filename)
-button = Button(root, text="Kết quả", command=result)
-button.pack()
-button1 = Button(root, text="Xoá", command=delete)
-button1.pack()
+btn_result = Button(root, text="Kết quả", command=result)
+btn_result.pack()
+btn_del = Button(root, text="Xoá", command=delete)
+btn_del.pack()
 root.mainloop()
