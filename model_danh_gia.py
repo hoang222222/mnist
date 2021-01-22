@@ -37,7 +37,7 @@ def run_test_harness():
     # load model
     model = load_model('ai_model.h5')
     # evaluate model on test dataset
-    _, acc = model.evaluate(testX, testY, verbose=0)
+    _, acc = model.evaluate(testX, testY, verbose=1)
     print('> %.3f' % (acc * 100.0))
 
 

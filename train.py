@@ -59,7 +59,7 @@ def run_test_harness():
     # define model
     model = define_model()
     # fit model
-    model.fit(trainX, trainY, epochs=10, batch_size=32, verbose=0)
+    model.fit(trainX, trainY, epochs=50, batch_size=32, verbose=1)
     # save model
     model.save('ai_model.h5')
 
