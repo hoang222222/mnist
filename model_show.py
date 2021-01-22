@@ -63,9 +63,9 @@ def evaluate_model(dataX, dataY, n_folds=5):
 		# select rows for train and test
 		trainX, trainY, testX, testY = dataX[train_ix], dataY[train_ix], dataX[test_ix], dataY[test_ix]
 		# fit model
-		history = model.fit(trainX, trainY, epochs=10, batch_size=32, validation_data=(testX, testY), verbose=0)
+		history = model.fit(trainX, trainY, epochs=50, batch_size=32, validation_data=(testX, testY), verbose=1)
 		# evaluate model
-		_, acc = model.evaluate(testX, testY, verbose=0)
+		_, acc = model.evaluate(testX, testY, verbose=1)
 		print('> %.3f' % (acc * 100.0))
 		# stores scores
 		scores.append(acc)
