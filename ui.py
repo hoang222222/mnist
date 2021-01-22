@@ -23,7 +23,7 @@ def paint(event):
 
 
 def delete():
-    cv.delete("all")
+    cv.delete(ALL)
     if os.path.exists("capture.png"):
         os.remove("capture.png")
     #    messagebox.showwarning("Cảnh báo", "Đã xoá")
@@ -48,7 +48,7 @@ def load_image(filename):
 # load an image and predict the class
 def result():
     # save the image
-    # filename =
+    # filename = "capture.png"
     image1.save("capture.png")
     # load the image
     img = load_image("capture.png")
