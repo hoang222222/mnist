@@ -19,9 +19,9 @@ import cv2
 
 
 
-width = 300
-height = 300
-center = height//1
+width = 600
+height = 800
+center = height//2
 white = (255, 255, 255)
 green = (0, 128, 0)
 
@@ -38,12 +38,9 @@ def paint(event):
 
 
 
-
 def load_image(filename):
-    # filename = "capture.png"
-    # image1.save(filename)
     # load the image
-    img = load_img('capture.png', grayscale=True, target_size=(28, 28))
+    img = load_img("capture.png", grayscale=True, target_size=(28, 28))
     # convert to array
     img = img_to_array(img)
     # reshape into a single sample with 1 channel
@@ -57,8 +54,8 @@ def load_image(filename):
 # load an image and predict the class
 def result():
     # save the image
-    filename = "capture.png"
-    image1.save(filename)
+    # filename = "capture.png"
+    image1.save("capture.png")
     # load the image
     img = load_image('capture.png')
     # load model
@@ -72,12 +69,12 @@ def result():
 
 def delete():
     cv.delete("all")
-    # if os.path.exists("capture.bmp"):
-    #     os.remove("capture.bmp")
+    if os.path.exists("capture.png"):
+        os.remove("capture.png")
     #    messagebox.showwarning("Cảnh báo", "Đã xoá")
-    #else:
+    # else:
     #    messagebox.showerror("Lỗi", "File không tồn tại")
-    root.update()
+    # root.update()
 
 
     #filename = "capture.png"
@@ -94,33 +91,6 @@ def delete():
     # load the image
 
 
-def openfn():
-    filename = filedialog.askopenfilename(title='open')
-
-    return filename
-
-
-def open_img():
-
-    x = openfn()
-    cv2 = Image.open(x)
-    cv2 = cv2.resize((50, 50), Image.ANTIALIAS)
-    cv2 = ImageTk.PhotoImage(cv2)
-    panel = Label(root, image=cv2)
-
-
-
-
-
-    panel.image = cv2
-    panel.pack()
-    img = load_image('cv2')
-    # load model
-    model = load_model('ai_model.h5')
-    # predict the class
-    digit = model.predict_classes(img)
-    messagebox.showinfo("Kết quả", digit[0])
-
 
 
 
@@ -133,7 +103,6 @@ root.title('Nhận diện chữ số viết tay')
 
 # Tkinter create a canvas to draw on
 cv = Canvas(root, width=width, height=height, bg='white')
-cv.grid(row=0, column=0)
 cv.pack()
 
 # PIL create an empty image and draw object to draw on
@@ -154,10 +123,11 @@ cv.bind("<B1-Motion>", paint)
 # filename = "my_drawing.png"
 # image1.save(filename)
 
-button1 = Button(root, text="Xoá", command=delete)
-button1.pack()
+
 button = Button(root, text="Kết quả", command=result)
 button.pack()
-btn = Button(root, text='open image', command=open_img).pack()
+button1 = Button(root, text="Xoá", command=delete)
+button1.pack()
+# btn = Button(root, text='Mở ảnh', command=open_img).pack()
 root.mainloop()
 

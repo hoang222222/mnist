@@ -52,7 +52,7 @@ def define_model():
 	return model
 
 # evaluate a model using k-fold cross-validation
-def evaluate_model(dataX, dataY, n_folds=5):
+def evaluate_model(dataX, dataY, n_folds=2):
 	scores, histories = list(), list()
 	# prepare cross validation
 	kfold = KFold(n_folds, shuffle=True, random_state=1)
@@ -63,7 +63,7 @@ def evaluate_model(dataX, dataY, n_folds=5):
 		# select rows for train and test
 		trainX, trainY, testX, testY = dataX[train_ix], dataY[train_ix], dataX[test_ix], dataY[test_ix]
 		# fit model
-		history = model.fit(trainX, trainY, epochs=50, batch_size=32, validation_data=(testX, testY), verbose=1)
+		history = model.fit(trainX, trainY, epochs=10, batch_size=32, validation_data=(testX, testY), verbose=1)
 		# evaluate model
 		_, acc = model.evaluate(testX, testY, verbose=1)
 		print('> %.3f' % (acc * 100.0))
